@@ -243,5 +243,10 @@ namespace Gostenova_Autoservice
             UpdateServices();
 
         }
+
+        private void SignUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new SignUpPage((sender as Button).DataContext as Service));
+        }
     }
 }

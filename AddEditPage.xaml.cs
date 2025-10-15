@@ -41,7 +41,7 @@ namespace Gostenova_Autoservice
                 errors.AppendLine("Укажите стоимость услуги");
             if (_currentServise.DiscountInt < 0 && _currentServise.DiscountInt >= 100)
                 errors.AppendLine("Укажите скидку");
-            if (string.IsNullOrWhiteSpace(_currentServise.DurationI))
+            if (_currentServise.DurationI < 240)
                 errors.AppendLine("Укажите длительность услуги");
             if (errors.Length > 0)
             {
