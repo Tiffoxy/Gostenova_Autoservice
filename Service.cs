@@ -31,7 +31,12 @@ namespace Gostenova_Autoservice
             {
                 return (int)(Discount*100);
             }
-                }
+            set
+            {
+                Discount = value / 100.0;
+
+            }
+        }
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

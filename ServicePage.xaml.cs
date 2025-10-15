@@ -218,15 +218,30 @@ namespace Gostenova_Autoservice
                 currentServices = currentServices.OrderBy( p => p.Cost).ToList();
             }
 
-            //min = CurrentPage * 10 + 10 < CountRecords ? CurrentPage * 10 + 10 : CountRecords;
-
             ServiceListView.ItemsSource = currentServices;
             Tablelist = currentServices;
             ChangePage(0, 0);
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+  
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new AddEditPage());
+            Manager.MainFrame.Navigate(new AddEditPage(null));
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+             Manager.MainFrame.Navigate(new AddEditPage((sender as Button).DataContext as Service));
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(Visibility == Visibility.Visible)
+            {
+                gostenova_avtoserviceEntities1.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                ServiceListView.ItemsSource = gostenova_avtoserviceEntities1.GetContext().Service.ToList();
+            }
+            UpdateServices();
+
         }
     }
 }
