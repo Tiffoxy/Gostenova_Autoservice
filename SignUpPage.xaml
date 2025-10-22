@@ -36,9 +36,9 @@
         <ComboBox Grid.Column="1" Grid.Row="2" Height="30" Width="300" FontSize="15" HorizontalAlignment="Left"></ComboBox>
         <DatePicker Grid.Column="1" Grid.Row="3" Height="30" Width="200" FontSize="20" Name="StarDate" HorizontalAlignment="Left"></DatePicker>
         <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal">
-            <TextBox Name="TBStart" Height="30" Width="200" FontSize="20"></TextBox>
+            <TextBox Name="TBStart" Height="30" Width="200" FontSize="20" TextChanged="TBStart_TextChanged"></TextBox>
             <TextBlock Text="Время окончания" FontSize="15" Height="30" Margin="20"></TextBlock>
-            <TextBox Text="TBEnd" Height="30" Width="200" FontSize="20"></TextBox>
+            <TextBox Name="TBEnd" Height="30" Width="200" FontSize="20"></TextBox>
         </StackPanel>
         <Button Name="SaveButton" Content="Сохранить" Grid.Row="5"
                 Grid.Column="0" Grid.ColumnSpan="2" Click="SaveButton_Click"></Button>

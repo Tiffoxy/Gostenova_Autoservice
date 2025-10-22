@@ -51,7 +51,7 @@
         <ListView Name="ServiceListView" Grid.Row="2" >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Background="{Binding FontStyle}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
@@ -74,8 +74,13 @@
                             </Image.Source>
                         </Image>
                         <TextBlock Text="{ Binding Title}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20" TextWrapping="Wrap"></TextBlock>
-                        <TextBlock Text="{Binding Cost, StringFormat={}{0:0} рублей за}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" FontSize="20"></TextBlock>
-                        <TextBlock Text="{Binding DurationI}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" FontSize="20"></TextBlock>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                            <TextBlock Text="{Binding OldCoast}" FontSize="20" TextDecorations="Strikethrough" Margin="5"></TextBlock>
+                            <TextBlock Text="{Binding NewCoast}" FontSize="20" Margin="5"></TextBlock>
+                            <TextBlock Text="рублей зa " FontSize="20" Margin="5"></TextBlock>
+                            <TextBlock Text="{Binding DurationI}" FontSize="20" Margin="5"></TextBlock>
+                            <TextBlock Text="мин." FontSize="20" Margin="5"></TextBlock>
+                        </StackPanel>
                         <TextBlock Text="{Binding DiscountInt,StringFormat=*скидка {0} %}" Opacity="{Binding DiscountInt}" Margin="5" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" FontSize="16"></TextBlock>
                         <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
                             <Button Name="EditButton" Click ="EditButton_Click" Content="Редактировать" Margin="2"></Button>

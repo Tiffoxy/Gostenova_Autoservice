@@ -68,5 +68,40 @@ namespace Gostenova_Autoservice
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void TBStart_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string s = TBStart.Text;
+            string[] start = s.Split(':');
+            if (start.Length != 2)
+            {
+                TBEnd.Text = "Ошибка в формате времени";
+                return;
+            }
+
+            if (s.Length != 5 || s[2] != ':')
+            {
+                TBEnd.Text = "Ошибка в формате времени.(Пиши часы и минуты через :)";
+                return;
+            }
+            if (!int.TryParse(start[0], out int startHour) || !int.TryParse(start[1], out int startMin))
+            {
+                TBEnd.Text = "Ошибка в формате времени";
+                return;
+            }
+            if (startHour < 0 || startHour > 23 || startMin < 0 || startMin > 59)
+            {
+                TBEnd.Text = "Ошибка в формате времени";
+                return;
+            }
+
+            int sum = startHour * 60 + startMin + _currentService.DurationI;
+            int endHour = sum / 60;
+            int endMin = sum % 60;
+            endHour = endHour % 24;
+            s = endHour.ToString() + ":" + endMin.ToString();
+            TBEnd.Text = s;
+        }
+    
     }
 }
